@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      @page { size: A4; margin: 22mm 18mm; }
+      body {
+        font-family: "Times New Roman", serif;
+        font-size: 12pt;
+        line-height: 1.35;
+        color: #111;
+      }
+      h1 {
+        font-size: 15pt;
+        margin: 0 0 8mm 0;
+        text-align: center;
+        letter-spacing: 0.3px;
+      }
+      h2 {
+        font-size: 12.5pt;
+        margin: 6mm 0 3mm 0;
+      }
+      p { margin: 0 0 3mm 0; text-align: justify; }
+      .meta { margin-bottom: 6mm; }
+      .clause-title { font-weight: 700; }
+      .signatures {
+        margin-top: 14mm;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12mm;
+      }
+      .sigbox {
+        border-top: 1px solid #666;
+        padding-top: 2mm;
+        text-align: center;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>CONTRATO DE COMPRAVENTA CON ARRAS PENITENCIALES</h1>
+
+    <p class="meta">En {{ metadata_location }}, a {{ metadata_date_text }}.</p>
+
+    <h2>REUNIDOS</h2>
+    <p><strong>Parte vendedora:</strong> {{ sellers_text }}</p>
+    <p><strong>Parte compradora:</strong> {{ buyers_text }}</p>
+    <p>
+      Los comparecientes actúan en su propio nombre e interés y se reconocen capacidad legal
+      suficiente para formalizar el presente contrato.
+    </p>
+
+    <h2>MANIFIESTAN</h2>
+    <p><strong>Finca:</strong> {{ property_address }}</p>
+    <p><strong>Registro:</strong> {{ property_registry }}</p>
+    <p><strong>Cargas:</strong> {{ property_cargas_text }}</p>
+    <p><strong>IBI anual:</strong> {{ property_ibi }} EUR</p>
+
+    <h2>CLÁUSULAS</h2>
+    {% for clause in clauses %}
+    <p><span class="clause-title">{{ clause.ordinal }}.</span> {{ clause.text }}</p>
+    {% endfor %}
+
+    <h2>CONDICIONES ECONÓMICAS</h2>
+    <p><strong>Precio total:</strong> {{ total_price_text }} EUR</p>
+    <p><strong>Arras penitenciales:</strong> {{ arras_amount_text }} EUR</p>
+    <p><strong>Importe restante:</strong> {{ remaining_amount_text }} EUR</p>
+    <p><strong>Fecha límite de escritura:</strong> {{ deadline_text }}</p>
+
+    <div class="signatures">
+      <div class="sigbox">LAS COMPRADORAS</div>
+      <div class="sigbox">LOS VENDEDORES</div>
+    </div>
+  </body>
+</html>
+
